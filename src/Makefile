@@ -1,6 +1,7 @@
 OS := $(shell uname -s)
 
-# CFLAGS = -c -Wall -Werror -Wextra
+CFLAGS = -c 
+# -Wall -Werror -Wextra
 
 all: clean s21_matrix.a test
 
@@ -13,7 +14,7 @@ else
 	./Test
 endif
 
-gcov_report: s21_decimal_gcov.o s21_test_gcov.o
+gcov_report: s21_matrix_gcov.o s21_test_gcov.o
 ifeq ($(OS), Darwin)
 	gcc -fprofile-arcs -ftest-coverage -lcheck s21_test_gcov.o s21_matrix_gcov.o -o Test
 else
@@ -28,13 +29,13 @@ endif
 s21_test.o: s21_test.c
 	gcc $(CFLAGS) s21_test.c -o s21_test.o
 
-s21_decimal.o: s21_matrix.c s21_matrix.h
+s21_matrix.o: s21_matrix.c s21_matrix.h
 	gcc $(CFLAGS) s21_matrix.c -o s21_matrix.o 
 
 s21_test_gcov.o: s21_test.c
 	gcc -fprofile-arcs -ftest-coverage $(CFLAGS) s21_test.c -o s21_test_gcov.o
 
-s21_matrix_gcov.o: s21_matrix.c s21_decimal.h
+s21_matrix_gcov.o: s21_matrix.c s21_matrix.h
 	gcc $(CFLAGS) -fprofile-arcs -ftest-coverage s21_matrix.c -o s21_matrix_gcov.o 
 
 clean:
@@ -43,7 +44,7 @@ clean:
 
 rebuild: clean all
 
-s21_decimal.a: s21_matrix.o
+s21_matrix.a: s21_matrix.o
 	ar rcs s21_matrix.a s21_matrix.o
 	ranlib s21_matrix.a
 
