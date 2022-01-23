@@ -26,6 +26,7 @@ matrix_t s21_mult_matrix(matrix_t *A, matrix_t *B);
 matrix_t s21_transpose(matrix_t *A);
 matrix_t s21_calc_complements(matrix_t *A);
 double s21_determinant(matrix_t *A);
+matrix_t s21_inverse_matrix(matrix_t *A);
     // вспомогательные функции
 matrix_t mini_matrix(int n, int m, matrix_t *A);
 double get_minor(int n, int m, matrix_t *A);
@@ -73,7 +74,8 @@ int main() {
     //matrix3 = s21_mult_matrix(&matrix1, &matrix2);
     deter = s21_determinant(&matrix1);
     printf("deter:%f\n", deter);
-    matrix3 = s21_calc_complements(&matrix1);
+    //matrix3 = s21_calc_complements(&matrix1);
+    //matrix3 = s21_inverse_matrix(&matrix1);
         for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
             printf("%f ", matrix1.matrix[i][j]); 
@@ -84,6 +86,10 @@ int main() {
             printf("%f ", matrix3.matrix[i][j]); 
         printf("\n");
     }
+    s21_remove_matrix(&matrix1);
+    s21_remove_matrix(&matrix2);
+    s21_remove_matrix(&matrix3);
+    
     return 0;
 }
 
@@ -208,7 +214,6 @@ matrix_t s21_transpose(matrix_t *A) {
 
 matrix_t s21_calc_complements(matrix_t *A) {
     matrix_t result;
-    matrix_t buffer;
     double minor;
     if (A->rows != A->columns) {
         result.matrix_type = INCORRECT_MATRIX;
@@ -236,6 +241,7 @@ double get_minor(int n, int m, matrix_t *A) {
     matrix_t buffer;
     buffer = mini_matrix(n, m, A);
     determinant = s21_determinant(&buffer);
+    s21_remove_matrix(&buffer);
     return determinant;
 }
 
@@ -249,9 +255,12 @@ double s21_determinant(matrix_t *A) {
     } else {
         for (int i = 0; i < A->rows; i++) {
             buffer = mini_matrix(i, 0, A);
-            result += pow(-1, i + 2) * A->matrix[i][0] *s21_determinant(&buffer);
+            result += pow(-1, i + 2) * A->matrix[i][0] * s21_determinant(&buffer);
+              //s21_remove_matrix(&buffer);
         }
+        //s21_remove_matrix(&buffer);
     }
+    s21_remove_matrix(&buffer);
     return result;
 }
 
@@ -292,4 +301,17 @@ int type_matrix(matrix_t *A) {
         A->matrix_type = CORRECT_MATRIX;
     }
     return 1;
+}
+
+matrix_t s21_inverse_matrix(matrix_t *A) {
+    matrix_t result = s21_create_matrix(A->rows, A->columns);
+    double determinant = s21_determinant(A);
+    if (determinant != 0 && determinant != NAN) {
+        result = s21_calc_complements(A);
+        result = s21_transpose(A);
+        result = s21_mult_number(&result, 1 / determinant);
+    } else {
+        result.matrix_type = INCORRECT_MATRIX;
+    }
+    return result;
 }
