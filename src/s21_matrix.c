@@ -3,8 +3,20 @@
 // int main() {
 //     matrix_t matrix1, matrix2, matrix3;
 //     int n = 3, m = 2;
-//     matrix1 = s21_create_matrix(n, n);
-//     //matrix2 = s21_create_matrix(m, n);
+//     matrix1 = s21_create_matrix(m, m);
+//     // matrix2 = s21_create_matrix(m, m);
+
+//     // matrix1.matrix[0][0] = 2;
+//     // matrix1.matrix[0][1] = 5;
+//     // matrix1.matrix[1][0] = 7.123456;
+//     // matrix1.matrix[1][1] = 6;
+//     // matrix2.matrix[0][0] = 2;
+//     // matrix2.matrix[0][1] = 5;
+//     // matrix2.matrix[1][0] = 7.123456;
+//     // matrix2.matrix[1][1] = 6;
+
+
+//     // printf("equal:%d\n", s21_eq_matrix(&matrix1, &matrix2));
 
 //     // matrix1.matrix[0][0] = 1;
 //     // matrix1.matrix[0][1] = 21;
@@ -23,15 +35,15 @@
 //     // matrix1.matrix[3][2] = 61;
 //     // matrix1.matrix[3][3] = 5;
 
-//     matrix1.matrix[0][0] = 2;
-//     matrix1.matrix[0][1] = 5;
-//     matrix1.matrix[0][2] = 7;
-//     matrix1.matrix[1][0] = 6;
-//     matrix1.matrix[1][1] = 3;
-//     matrix1.matrix[1][2] = 4;
-//     matrix1.matrix[2][0] = 5;
-//     matrix1.matrix[2][1] = -2;
-//     matrix1.matrix[2][2] = -3;
+//     // matrix1.matrix[0][0] = 2;
+//     // matrix1.matrix[0][1] = 5;
+//     // matrix1.matrix[0][2] = 7;
+//     // matrix1.matrix[1][0] = 6;
+//     // matrix1.matrix[1][1] = 3;
+//     // matrix1.matrix[1][2] = 4;
+//     // matrix1.matrix[2][0] = 5;
+//     // matrix1.matrix[2][1] = -2;
+//     // matrix1.matrix[2][2] = -3;
 
 //     // matrix2.matrix[0][0] = 1;
 //     // matrix2.matrix[0][1] = -1;

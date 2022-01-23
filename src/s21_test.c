@@ -583,7 +583,7 @@ START_TEST(test_determinate_3) {
   A = s21_create_matrix(3, 1);
   determinate = s21_determinant(&A);
   if (isnan(determinate) != 0) check = 1;
-  ck_assert_int_eq(1, 1);
+  ck_assert_int_eq(1, check);
   s21_remove_matrix(&A);
 }
 END_TEST

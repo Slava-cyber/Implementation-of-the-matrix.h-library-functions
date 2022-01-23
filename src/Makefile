@@ -1,7 +1,6 @@
 OS := $(shell uname -s)
 
-CFLAGS = -c 
-# -Wall -Werror -Wextra
+CFLAGS = -c -Wall -Werror -Wextra
 
 all: clean s21_matrix.a test
 
