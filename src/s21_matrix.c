@@ -1,87 +1,5 @@
 #include "s21_matrix.h"
 
-// int main() {
-//     matrix_t matrix1, matrix2, matrix3;
-//     int n = 3, m = 2;
-//     matrix1 = s21_create_matrix(m, m);
-//     // matrix2 = s21_create_matrix(m, m);
-
-//     // matrix1.matrix[0][0] = 2;
-//     // matrix1.matrix[0][1] = 5;
-//     // matrix1.matrix[1][0] = 7.123456;
-//     // matrix1.matrix[1][1] = 6;
-//     // matrix2.matrix[0][0] = 2;
-//     // matrix2.matrix[0][1] = 5;
-//     // matrix2.matrix[1][0] = 7.123456;
-//     // matrix2.matrix[1][1] = 6;
-
-
-//     // printf("equal:%d\n", s21_eq_matrix(&matrix1, &matrix2));
-
-//     // matrix1.matrix[0][0] = 1;
-//     // matrix1.matrix[0][1] = 21;
-//     // matrix1.matrix[0][2] = 32;
-//     // matrix1.matrix[0][3] = 47;
-//     // matrix1.matrix[1][0] = 2;
-//     // matrix1.matrix[1][1] = 23;
-//     // matrix1.matrix[1][2] = 3;
-//     // matrix1.matrix[1][3] = 12;
-//     // matrix1.matrix[2][0] = 5;
-//     // matrix1.matrix[2][1] = 54;
-//     // matrix1.matrix[2][2] = 4;
-//     // matrix1.matrix[2][3] = 32;
-//     // matrix1.matrix[3][0] = 89;
-//     // matrix1.matrix[3][1] = 7;
-//     // matrix1.matrix[3][2] = 61;
-//     // matrix1.matrix[3][3] = 5;
-
-//     // matrix1.matrix[0][0] = 2;
-//     // matrix1.matrix[0][1] = 5;
-//     // matrix1.matrix[0][2] = 7;
-//     // matrix1.matrix[1][0] = 6;
-//     // matrix1.matrix[1][1] = 3;
-//     // matrix1.matrix[1][2] = 4;
-//     // matrix1.matrix[2][0] = 5;
-//     // matrix1.matrix[2][1] = -2;
-//     // matrix1.matrix[2][2] = -3;
-
-//     // matrix2.matrix[0][0] = 1;
-//     // matrix2.matrix[0][1] = -1;
-//     // matrix2.matrix[0][2] = 1;
-//     // matrix2.matrix[1][0] = 2;
-//     // matrix2.matrix[1][1] = 3;
-//     // matrix2.matrix[1][2] = 4;
-//     double deter;
-//     //matrix3 = s21_mult_matrix(&matrix1, &matrix2);
-//     deter = s21_determinant(&matrix1);
-//     printf("deter:%f\n", deter);
-//     //matrix3 = s21_calc_complements(&matrix1);
-//     matrix3 = s21_inverse_matrix(&matrix1);
-//     //matrix3 = s21_mult_number(&matrix1, 2);
-//         for (int i = 0; i < n; i++) {
-//         for (int j = 0; j < n; j++)
-//             printf("%f ", matrix1.matrix[i][j]);
-//         printf("\n");
-//     }
-//     for (int i = 0; i < n; i++) {
-//         for (int j = 0; j < n; j++)
-//             printf("%f ", matrix3.matrix[i][j]);
-//         printf("\n");
-//     }
-//   matrix_t A;
-//   matrix_t B;
-//   matrix_t C;
-//       A = s21_create_matrix(2, 3);
-//   B = s21_create_matrix(5, 4);
-//   C = s21_mult_matrix(&A, &B);
-
-//     s21_remove_matrix(&matrix1);
-//     s21_remove_matrix(&matrix2);
-//     s21_remove_matrix(&matrix3);
-
-//     return 0;
-// }
-
 matrix_t s21_create_matrix(int rows, int columns) {
     matrix_t newMatrix;
     if (rows != 0 && columns != 0) {
@@ -123,8 +41,8 @@ int s21_eq_matrix(matrix_t *A, matrix_t *B) {
             for (int j = 0; j < A-> columns; j++) {
                 double wholeA, wholeB;
                 double fractionA, fractionB;
-                fractionA = modf(A->matrix[i][j], &wholeA) * 10e6;
-                fractionB = modf(B->matrix[i][j], &wholeB) * 10e6;
+                fractionA = modf(A->matrix[i][j], &wholeA) * 10e5;
+                fractionB = modf(B->matrix[i][j], &wholeB) * 10e5;
                 fractionA = modf(fractionA, &wholeA);
                 fractionB = modf(fractionB, &wholeB);
                 if (wholeA != wholeB)
