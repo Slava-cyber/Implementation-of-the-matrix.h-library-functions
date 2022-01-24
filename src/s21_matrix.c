@@ -41,8 +41,8 @@ int s21_eq_matrix(matrix_t *A, matrix_t *B) {
             for (int j = 0; j < A-> columns; j++) {
                 double wholeA, wholeB;
                 double fractionA, fractionB;
-                fractionA = modf(A->matrix[i][j], &wholeA) * 10e5;
-                fractionB = modf(B->matrix[i][j], &wholeB) * 10e5;
+                fractionA = modf(A->matrix[i][j], &wholeA) * 10e6;
+                fractionB = modf(B->matrix[i][j], &wholeB) * 10e6;
                 fractionA = modf(fractionA, &wholeA);
                 fractionB = modf(fractionB, &wholeB);
                 if (wholeA != wholeB)
